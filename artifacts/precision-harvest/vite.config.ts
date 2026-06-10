@@ -4,12 +4,8 @@ import tailwindcss from "@tailwindcss/vite";
 import path from "path";
 
 const isReplit = !!process.env.REPL_ID;
-const port = Number(process.env.PORT ?? "3000");
-const basePath = process.env.BASE_PATH ?? "/";
-
-if (Number.isNaN(port) || port <= 0) {
-  throw new Error(`Invalid PORT value: "${process.env.PORT}"`);
-}
+const port = Number(process.env.PORT || "3000");
+const basePath = process.env.BASE_PATH || "/";
 
 export default defineConfig({
   base: basePath,
@@ -37,7 +33,7 @@ export default defineConfig({
   },
   root: path.resolve(import.meta.dirname),
   build: {
-    outDir: path.resolve(import.meta.dirname, "dist/public"),
+    outDir: "public",
     emptyOutDir: true,
   },
   server: {
