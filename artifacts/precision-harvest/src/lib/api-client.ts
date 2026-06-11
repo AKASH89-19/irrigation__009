@@ -6,7 +6,7 @@ export function getAuthHeaders(): Record<string, string> {
   return { Authorization: `Bearer ${token}` };
 }
 
-export const API_URL = import.meta.env.VITE_API_URL || `${import.meta.env.BASE_URL?.replace(/\/$/, "") ?? ""}/api`;
+export const API_URL = "/api";
 
 export async function apiPost<T>(path: string, body: unknown): Promise<T> {
   const res = await fetch(`${API_URL}${path}`, {
