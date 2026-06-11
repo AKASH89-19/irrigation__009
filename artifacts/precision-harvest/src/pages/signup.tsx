@@ -31,7 +31,7 @@ export default function SignUp() {
   const onSubmit = async (data: FormData) => {
     setServerError(null);
     try {
-      const res = await apiPost<AuthResponse>("/auth/signup", data);
+      const res = await apiPost<AuthResponse>("/signup", data);
       signIn(res.token, res.user);
       navigate("/");
     } catch (err: unknown) {

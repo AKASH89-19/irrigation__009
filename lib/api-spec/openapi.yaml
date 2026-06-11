@@ -22,7 +22,7 @@ tags:
     description: Notification settings
 
 paths:
-  /auth/signup:
+  /signup:
     post:
       operationId: signup
       tags: [auth]
@@ -43,7 +43,7 @@ paths:
         "409":
           description: Email already in use
 
-  /auth/signin:
+  /signin:
     post:
       operationId: signin
       tags: [auth]
@@ -64,7 +64,7 @@ paths:
         "401":
           description: Invalid credentials
 
-  /auth/me:
+  /me:
     get:
       operationId: getMe
       tags: [auth]

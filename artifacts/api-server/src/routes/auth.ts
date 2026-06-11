@@ -7,7 +7,7 @@ import { SignupBody, SigninBody, SigninResponse, GetMeResponse } from "@workspac
 
 const router: IRouter = Router();
 
-router.post("/auth/signup", async (req: Request, res: Response) => {
+router.post("/signup", async (req: Request, res: Response) => {
   const parsed = SignupBody.safeParse(req.body);
   if (!parsed.success) {
     res.status(400).json({ error: "Validation failed", details: parsed.error.flatten() });
@@ -40,7 +40,7 @@ router.post("/auth/signup", async (req: Request, res: Response) => {
   res.status(201).json(response);
 });
 
-router.post("/auth/signin", async (req: Request, res: Response) => {
+router.post("/signin", async (req: Request, res: Response) => {
   const parsed = SigninBody.safeParse(req.body);
   if (!parsed.success) {
     res.status(400).json({ error: "Validation failed", details: parsed.error.flatten() });
@@ -76,7 +76,7 @@ router.post("/auth/signin", async (req: Request, res: Response) => {
   res.status(200).json(response);
 });
 
-router.get("/auth/me", requireAuth, async (req: AuthRequest, res: Response) => {
+router.get("/me", requireAuth, async (req: AuthRequest, res: Response) => {
   const user = await UserModel.findById(req.userId).lean();
   if (!user) {
     res.status(401).json({ error: "Unauthorized", message: "User not found" });
